@@ -16,7 +16,7 @@ class JobTest < Minitest::Test
   end
 
   def test_women_magican_skill
-    assert_equal 'メラミ', martial.skill(women)
+    assert_equal 'メラミ', magician.skill(women)
   end
 
   def test_man_martial_skill
