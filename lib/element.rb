@@ -14,12 +14,12 @@ class Element
     case @element
     when Element[:WIND]
       offensive += 5
-      offensive += 20 if job.martial?
     when Element[:WATER]
       offensive +=  10
     when Element[:THUNDER]
       offensive +=  15
     end
+    offensive += job.element_special_offence(self)
     offensive
   end
 
@@ -30,10 +30,22 @@ class Element
       defence += 10
     when Element[:WATER]
       defence += 5
-      defence += 10 if job.fighter?
     when Element[:THUNDER]
-      defence += 5 if job.magician?
+      defence +=  0
     end
+    defence += job.element_special_defence(self)
     defence
+  end
+
+  def wind?
+    @element == Element[:WIND]
+  end
+
+  def water?
+    @element == Element[:WATER]
+  end
+
+  def thunder?
+    @element == Element[:THUNDER]
   end
 end
